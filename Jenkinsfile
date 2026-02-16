@@ -26,5 +26,19 @@ pipeline {
                 // Ta commande de test ici
             }
         }
+        stage('Deploy to Heroku') {
+            steps {
+                withCredentials([string(credentialsId: 'HEROKU_API_KEY', variable: 'HEROKU_API_KEY')]) {
+                    // Installation du CLI Heroku si nécessaire ou utilisation de Git
+                    script {
+                        if (isUnix()) {
+                            sh 'git push https://heroku:$HEROKU_API_KEY@git.heroku.com/nom-de-ton-app.git main'
+                        } else {
+                            bat 'git push https://heroku:%HEROKU_API_KEY%@git.heroku.com/nom-de-ton-app.git main'
+                        }
+                    }
+                }
+            }
+        }
     }
 }
