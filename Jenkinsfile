@@ -11,9 +11,13 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Compilation en cours...'
-                // Remplace par ta commande (ex: sh 'mvn install' ou sh 'npm install')
-                // Sur Windows avec Jenkins, on utilise souvent 'bat' au lieu de 'sh'
-                bat 'echo Hello World Build!' 
+                script {
+                    if (isUnix()) {
+                        sh 'echo Hello World Build!'
+                    } else {
+                        bat 'echo Hello World Build!'
+                    }
+                }
             }
         }
         stage('Test') {
