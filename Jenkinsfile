@@ -32,9 +32,9 @@ pipeline {
                     // Installation du CLI Heroku si nécessaire ou utilisation de Git
                     script {
                         if (isUnix()) {
-                            sh 'git push https://heroku:$HEROKU_API_KEY@git.heroku.com/nom-de-ton-app.git main'
+                            sh 'git push https://heroku:$HEROKU_API_KEY@git.heroku.com/helloword.git HEAD:main --force'
                         } else {
-                            bat 'git push https://heroku:%HEROKU_API_KEY%@git.heroku.com/nom-de-ton-app.git main'
+                            bat 'git push https://heroku:%HEROKU_API_KEY%@git.heroku.com/helloword.git HEAD:main --force'
                         }
                     }
                 }
