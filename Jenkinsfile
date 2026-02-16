@@ -32,9 +32,9 @@ pipeline {
                     // Installation du CLI Heroku si nécessaire ou utilisation de Git
                     script {
                         if (isUnix()) {
-                            sh 'git push https://heroku:$HEROKU_API_KEY@git.heroku.com/helloword.git HEAD:main --force'
+                            sh 'git push https://_:$HEROKU_API_KEY@git.heroku.com/hello-nextjs-mamoudou-f9b476d58f42.git HEAD:main --force'
                         } else {
-                            bat 'git push https://heroku:%HEROKU_API_KEY%@git.heroku.com/helloword.git HEAD:main --force'
+                            bat 'git push https://_:%HEROKU_API_KEY%@git.heroku.com/hello-nextjs-mamoudou-f9b476d58f42.git HEAD:main --force'
                         }
                     }
                 }
